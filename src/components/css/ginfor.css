@@ -1,0 +1,162 @@
+/* Generic Form Styling */
+.gForm {
+  width: 90%;
+  height: 50%;
+  padding: 20px;
+  background-color: #fff; /* Light grey background */
+  box-sizing: border-box;
+  margin-left: 65px;
+  border-radius: 10px;
+}
+
+h1, h6 {
+  margin-bottom: 20px;
+  color: #1f2d3d; /* Dark blue text */
+  font-family: Arial, sans-serif;
+}
+
+/* Grid container for the form fields */
+.form-grid {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 20px; /* Space between inputs */
+  margin-bottom: 5px;
+}
+
+.form-group{
+  width: 100%;
+  margin-top: 0px;
+}
+/* Form labels */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #36454f; /* Dark grey */
+  font-size: 14px;
+  margin-bottom: -10px;
+}
+
+/* Form inputs */
+.form-group input {
+  width: 100%;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color: #f1f3f5; /* Slightly off-white */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-group1{
+  width: 100%;
+  margin-top: 0px;
+  margin-left: 60%;
+}
+
+.form-group1 label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #36454f; 
+  margin-bottom: -10px;/* Dark grey */
+  font-size: 14px;
+}
+.form-group1 input {
+  width: 100%;
+  padding: 10px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color: #f1f3f5; /* Slightly off-white */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-group2{
+  width: 100%;
+  margin-top: 0px;
+  margin-left: -3px;         
+
+ 
+}
+.form-group2 label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #36454f; 
+  margin-bottom: -10px;/* Dark grey */
+  font-size: 14px;
+}
+.form-group2 input {
+  width: 100%;
+  padding: 10px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color: #f1f3f5; /* Slightly off-white */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-group3{
+  width: 100%;
+  margin-top: 0px;
+  margin-left: -47%;
+}
+
+.form-group3 label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #36454f; 
+  margin-bottom: -10px;/* Dark grey */
+  font-size: 14px;
+}
+.form-group3 input {
+  width: 100%;
+  padding: 10px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color: #f1f3f5; /* Slightly off-white */
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.form-group input:focus {
+  border-color: #007bff; /* Highlight input on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+.generic{
+  margin-left: 70px;
+  margin-bottom: 40px;
+}
+.head6{
+  margin-top:-20px;
+}
+
+/* Save & Continue Button */
+.button {
+  margin-left: 80%;
+ margin-top: 0px;
+}
+
+ button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+ button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

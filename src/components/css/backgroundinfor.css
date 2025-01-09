@@ -1,0 +1,157 @@
+body{
+    background-color: #dfe4ea;
+  }
+  .Gform {
+    width: 90%;
+    height: 100%;
+    padding: 20px;
+    background-color: #fff; 
+    box-sizing: border-box;
+    margin-left: 65px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .borders{
+   border: 1.5px solid black;
+   border-radius: 5px;
+   margin-bottom: 20px;
+  }
+  .gen{
+    margin: 60px;
+    margin-bottom: 10px;
+  }
+  .form-container {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between; /* Adjust spacing between items */
+    gap: 20px; /* Adds space between the form groups */
+  }
+  .lform {
+    display: flex;
+    flex-direction: column; /* Stack label on top of input */
+    align-items: flex-start; /* Align label and input to the left */
+  }
+  .input0{
+    text-align: center;
+    width: 300px;
+    height: 70px;
+    border: 1px solid #dfe4ea; /* Light grey border */
+    border-radius: 4px;
+    background-color: #f1f3f5; /* Slightly off-white */
+  }
+  .input1, .input22, .input32{
+    width: 500px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #dfe4ea; /* Light grey border */
+    border-radius: 4px;
+    background-color: #f1f3f5;
+  }
+  .input2{
+    text-align: center;
+    width: 300px;
+    height: 70px;
+    border: 1px solid #dfe4ea; /* Light grey border */
+    border-radius: 4px;
+    background-color: #f1f3f5; /* Slightly off-white */
+  }
+.input3{
+    text-align: center;
+    width: 300px;
+    height: 70px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color: #f1f3f5; /* Slightly off-white */
+}
+.input4{
+  width: 750px;
+  height: 30px;
+  margin: 2px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color:  #f1f3f5 ;
+}
+.input5{
+  width: 320px;
+  height: 30px;
+  margin: 2px;
+  margin-left: -25px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color:  #f1f3f5;
+}
+.text h6{
+    margin-left: 2px; 
+}
+h6{
+    margin-left: 10px;
+}
+
+.type-container{
+  display: flex;
+    margin: 10px;
+    justify-content: space-between; /* Adjust spacing between items */
+    gap: 20px;
+}
+.input6{
+  width: 500px;
+  height: 30px;
+  margin: 2px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color:  #f1f3f5 ;
+}
+.input7{
+  width: 530px;
+  height: 30px;
+  margin: 2px;
+  margin-right: 50px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color:  #f1f3f5 ;
+}
+  .text{
+    margin-bottom: 20px;
+    margin-left: 15px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Places buttons at opposite ends */
+    padding: 20px; 
+    width: 94.5%;/* Adds spacing inside the container */
+    margin-left: 45px;
+  }
+  
+  .go-back-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #6c757d; /* Gray color for the text */
+    border: 1px solid #6c757d; /* Border matches the text color */
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .go-back-button:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+  }
+  
+  .save-exit-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    margin-right: 20px;
+    border-radius: 4px;
+    background-color: #007bff; /* Blue background for the button */
+    cursor: pointer;
+  }
+  
+  .save-exit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+.tick{
+margin-left: 10px;
+}
+  
