@@ -1,7 +1,17 @@
 import React from 'react'
 import './css/backgroundinfor.css'
+import { useNavigate } from "react-router-dom";
 
 const BackgroundInfor = () => {
+  const navigate = useNavigate();
+
+  const handleSaveAndExit = () => {
+    navigate("/alert");  
+  };
+
+  const handleBackButton = () => {
+    navigate(-1);
+  };
   return (
     <>
     <div>
@@ -76,8 +86,8 @@ const BackgroundInfor = () => {
               </div>
         </div>
         <div className="button-container">
-      <button className="go-back-button">Go Back</button>
-      <button className="save-exit-button">Save & Exit</button>
+      <button className="go-back-button" onClick={handleBackButton}>Go Back</button>
+      <button className="save-exit-button" onClick={handleSaveAndExit}>Save & Exit</button>
     </div>
         </>
         )

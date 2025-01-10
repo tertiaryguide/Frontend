@@ -24,19 +24,14 @@ body{
     flex-direction: column; /* Stack label on top of input */
     align-items: flex-start; /* Align label and input to the left */
   }
-  .input1{
-    width: 500px;
-    height: 30px;
-    border: 1px solid #dfe4ea; /* Light grey border */
-    border-radius: 4px;
-    background-color: #f1f3f5; /* Slightly off-white */
-  }
-  .input2{
+  
+  .input66{
     width: 250px;
-    height: 30px;
-    border: 1px solid #dfe4ea; /* Light grey border */
-    border-radius: 4px;
-    background-color: #f1f3f5; /* Slightly off-white */
+  height: 30px;
+  margin: 2px;
+  border: 1px solid #dfe4ea; /* Light grey border */
+  border-radius: 4px;
+  background-color:  #f1f3f5 ;/* Slightly off-white */
   }
 .input3{
   width: 250px;
@@ -92,7 +87,7 @@ body{
     display: flex;
     justify-content: space-between; /* Places buttons at opposite ends */
     padding: 20px; /* Adds spacing inside the container */
-    background-color: #f8f9fc; /* Light background color for the container */
+
   }
   
   .go-back-button {

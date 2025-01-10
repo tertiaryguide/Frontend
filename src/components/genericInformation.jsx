@@ -1,74 +1,80 @@
 import React, { useState } from 'react';
-import './css/ginfor.css'
+import './css/ginfor.css';
+import { useNavigate } from "react-router-dom";
 
 const GenericInformation = () => {
-  const [dob, setDob] = useState(''); 
+  const [dob, setDob] = useState('');
+  const navigate = useNavigate(); 
 
   const handleDobChange = (e) => {
-    setDob(e.target.value); 
+    setDob(e.target.value);
+  };
+
+  const handleClick = () => {
+    navigate("/educational-background"); 
   };
 
   return (
     <>
-    <div className="generic">
-    <h1>  Generic Form</h1>
-    <h6 className='head6'>Save Your Data to Minimize Repitition</h6>
-    </div>
+      <div className="generic">
+        <h1>Generic Form</h1>
+        <h6 className='head6'>Save Your Data to Minimize Repetition</h6>
+      </div>
 
-    <div className="gForm">
-          <h2>Background Information</h2>
-          <h6>This data is automatically sent to the school you applied to.</h6>
-          <form className='form-grid'>
-              <div>
-                  <div className='form-group'>
-                      <label htmlFor="surname">Surname</label> <br />
-                      <input type="text" id="surname" name="surname" />
-                      <div style={{ marginTop: '10px' }}>
-                      <label htmlFor="dob">Date of Birth</label> <br />
-                      <input
-                          type="date"
-                          id="dob"
-                          name="dob"
-                          value={dob}
-                          onChange={handleDobChange} />
-                           {dob && (
+      <div className="gForm">
+        <h2>Background Information</h2>
+        <h6>This data is automatically sent to the school you applied to.</h6>
+        <form className='form-grid'>
+          <div>
+            <div className='form-group'>
+              <label htmlFor="surname">Surname</label> <br />
+              <input type="text" id="surname" name="surname" />
+              <div style={{ marginTop: '10px' }}>
+                <label htmlFor="dob">Date of Birth</label> <br />
+                <input
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  value={dob}
+                  onChange={handleDobChange} />
+                {dob && (
                   <p style={{ marginTop: '10px' }}>
-                      Selected Date of Birth: <strong>{dob}</strong>
+                    Selected Date of Birth: <strong>{dob}</strong>
                   </p>
-              )}
-                  </div>
-                  </div>
+                )}
               </div>
-              <div className='form-group1'>
-                  <label htmlFor="">Other Name</label><br />
-                  <input type="text" id="Other Name" name="Other Name" />
-                  <label htmlFor="">Nationality</label><br />
-                  <input type="text" id="Nationality" name="Nationality" />
-              </div>
-              <br />
-              <br />
-              <div className='form-group2'>
-                  <label htmlFor="">City/Town</label><br />
-                  <input type="text" id="City/Town" name="City/Town" />
-                  <label htmlFor="">Digital Address</label><br />
-                  <input type="text" id="Digital Address" name="Digital Address" />
-                  <label htmlFor="">Home Address</label><br />
-                  <input type="text" id="Nationality" name="Nationality" />
-              </div>
-              <br /> 
-              <br />
-              <div className='form-group3'>
-                  <label htmlFor="">Email</label><br />
-                  <input type="text" id="Email" name="Email" />
-                  <label htmlFor="">Contact</label><br />
-                  <input type="text" id="Contact" name="Contact" />
-              </div>
-          </form>
-      </div >
+            </div>
+          </div>
+          <div className='form-group1'>
+            <label htmlFor="otherName">Other Name</label><br />
+            <input type="text" id="otherName" name="otherName" />
+            <label htmlFor="nationality">Nationality</label><br />
+            <input type="text" id="nationality" name="nationality" />
+          </div>
+          <br />
+          <br />
+          <div className='form-group2'>
+            <label htmlFor="city">City/Town</label><br />
+            <input type="text" id="city" name="city" />
+            <label htmlFor="digitalAddress">Digital Address</label><br />
+            <input type="text" id="digitalAddress" name="digitalAddress" />
+            <label htmlFor="homeAddress">Home Address</label><br />
+            <input type="text" id="homeAddress" name="homeAddress" />
+          </div>
+          <br />
+          <br />
+          <div className='form-group3'>
+            <label htmlFor="email">Email</label><br />
+            <input type="text" id="email" name="email" />
+            <label htmlFor="contact">Contact</label><br />
+            <input type="text" id="contact" name="contact" />
+          </div>
+        </form>
+      </div>
       <div>
-    <button className='button'>save & Continue</button>
-    </div>
-      </>
+        <button className='button' onClick={handleClick}>Save & Continue</button>
+      </div>
+    </>
   );
 };
 

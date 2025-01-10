@@ -1,17 +1,17 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import './css/navBar.css';
 
-const Header = () => {
+const Navbar = () => {
   return (
     <header className="header">
       <div className="container">
         <nav className="navbar">
-          <a href="#" className="brand">Home</a>
+          <Link to="./genericInformation.jsx" className="brand">Home</Link>
           <ul className="nav-links">
-            <li><a href="#" className="link">DashBoard</a></li>
-            <li><a href="#" className="link">Pricing</a></li>
-            <li><a href="#" className="link">FAQs</a></li>
-            <li><a href="#" className="link">About</a></li>
+            <li><Link to="#" className="link">DashBoard</Link></li>
+            <li><Link to="#" className="link">Pricing</Link></li>
+            <li><Link to="#" className="link">FAQs</Link></li>
+            <li><Link to="#" className="link">About</Link></li>
           </ul>
           <div className="auth-buttons">
             <button className="btn btn-outline">Login</button>
@@ -23,4 +23,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
