@@ -10,9 +10,9 @@ import Alert from './components/alert';
 function App() {
   return (
     <Router>
-      <div>
+      <div style={{padding: '10px'}}>
         <Navbar />
-        <h1 className="text-3xl font-bold underline"></h1>
+        {/* <h1 className="text-3xl font-bold underline"></h1> */}
         <Routes>
           <Route path="/" element={<GenericInformation />} />
           <Route path="/educational-background" element={<EducationalBackround />} />
