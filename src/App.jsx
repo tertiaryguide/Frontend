@@ -2,10 +2,11 @@ import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/navbar';
-import GenericInformation from './components/genericInformation';
-import EducationalBackround from './components/EducationalBackround';
-import BackgroundInfor from './components/backgroundInfor';
+import GenericInformation from './components/background';
+import EducationalBackround from './components/education';
+import BackgroundInfor from './components/supporting';
 import Alert from './components/alert';
+import SupportingInfor from './components/supporting';
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
         <Navbar />
         {/* <h1 className="text-3xl font-bold underline"></h1> */}
         <Routes>
-          <Route path="/" element={<GenericInformation />} />
+          <Route path="/" element={<BackgroundInfor />} />
           <Route path="/educational-background" element={<EducationalBackround />} />
-          <Route path="/backgroundInfor" element={<BackgroundInfor />} />
+          <Route path="/supporting" element={<SupportingInfor />} />
           <Route path="/alert" element={<Alert />} />
         </Routes>
       </div>

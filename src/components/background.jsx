@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./css/ginfor.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PageHeader from "./page-header";
+import MultipleFileUpload from "./file-upload";
 
 const initial = {
   surname: "",
@@ -15,7 +17,7 @@ const initial = {
   contact: "",
 };
 
-const GenericInformation = () => {
+const BackgroundInformation = () => {
   const [values, setValues] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -40,11 +42,8 @@ const GenericInformation = () => {
   };
   return (
     <>
-      <div className="generic">
-        <h1>Generic Form</h1>
-        <h6 className="head6">Save Your Data to Minimize Repetition</h6>
-      </div>
-
+  <PageHeader/>
+<MultipleFileUpload/>
       {isLoading === true ? (
         <div>Loading...</div>
       ) : (
@@ -180,4 +179,4 @@ const GenericInformation = () => {
   );
 };
 
-export default GenericInformation;
+export default BackgroundInformation;
