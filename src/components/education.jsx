@@ -3,6 +3,9 @@ import "./css/einfor.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PageHeader from "./page-header";
+import { getCookie } from "../../lib/utils";
+
+const userID = getCookie("userID");
 
 const initial = {
   indexNumber: "",
@@ -30,7 +33,7 @@ const EducationalBackground = () => {
       await axios.post(
         "http://localhost:8000/api/applicants/academic-history",
         {
-          applicantId: "",
+          applicantId: userID,
           backgroundData: values,
         }
       );
@@ -139,6 +142,16 @@ const EducationalBackground = () => {
           ))}
         </div>
       </div>
+      <form className="form-container">
+        <h2 className="">Academic Aspiration</h2>
+        <div className="lform">
+          <label htmlFor="">Programme of interest</label>
+          <input className="input4" type="text" id="School" name="School" />
+          <input className="input4" type="text" id="School" name="School" />
+          <input className="input4" type="text" id="School" name="School" />
+          <input className="input4" type="text" id="School" name="School" />
+        </div>
+      </form>
       <div className="button-container">
         <button className="go-back-button" onClick={handleBackButton}>
           Go Back

@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PageHeader from "./page-header";
 import MultipleFileUpload from "./file-upload";
+import { getCookie } from "../../lib/utils";
 
+const userID = getCookie("userID");
 const initial = {
   surname: "",
   otherNames: "",
@@ -30,7 +32,7 @@ const BackgroundInformation = () => {
     try {
       setIsLoading(true);
       await axios.post("http://localhost:8000/api/applicants/background-data", {
-        applicantId: '',
+        applicantId: userID,
         backgroundData: values,
       });
       navigate("/educational-background");

@@ -6,12 +6,11 @@ const Navbar = () => {
     <header className="header">
       <div className="container">
         <nav className="navbar">
-          <img src="/logo.png" alt='logo' />
+          <img src="./logo.png" alt='logo' />
           <ul className="nav-links">
-            <li><Link to="#" className="link">Background</Link></li>
-            <li><Link to="#" className="link">Academics</Link></li>
-            <li><Link to="#" className="link">Aspiration</Link></li>
-            <li><Link to="#" className="link">About</Link></li>
+            <li><Link to="/" className="link">Background</Link></li>
+            <li><Link to="/education" className="link">Aspiration</Link></li>
+            <li><Link to="/support" className="link">Support</Link></li>
           </ul>
           <div className="auth-buttons">
             <button className="btn btn-outline">Login</button>

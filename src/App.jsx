@@ -16,9 +16,8 @@ function App() {
         {/* <h1 className="text-3xl font-bold underline"></h1> */}
         <Routes>
           <Route path="/" element={<BackgroundInfor />} />
-          <Route path="/educational-background" element={<EducationalBackround />} />
+          <Route path="/education" element={<EducationalBackround />} />
           <Route path="/supporting" element={<SupportingInfor />} />
-          <Route path="/alert" element={<Alert />} />
         </Routes>
       </div>
     </Router>

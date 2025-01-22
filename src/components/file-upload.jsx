@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { getCookie } from "../../lib/utils";
 
+const userID = getCookie("userID");
 const MultipleFileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploadedUrls, setUploadedUrls] = useState([]);
@@ -36,7 +38,7 @@ const MultipleFileUpload = () => {
       setUploadedUrls(urls);
 
       // Send URLs to backend for storage
-      await axios.post("http://localhost:8000/api/upload-files", { fileUrls: urls });
+      await axios.post(`http://localhost:8000/api/${userID}/upload-files`, { fileUrls: urls });
       alert("Files uploaded and stored successfully!");
     } catch (error) {
       console.error("Error uploading files:", error);
@@ -57,7 +59,7 @@ const MultipleFileUpload = () => {
         {isUploading ? "Uploading..." : "Upload Files"}
       </button>
 
-      <h2>Uploaded Files:</h2>
+      {/* <h2>Uploaded Files:</h2>
       <ul>
         {uploadedUrls.map((url, index) => (
           <li key={index}>
@@ -66,7 +68,7 @@ const MultipleFileUpload = () => {
             </a>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
