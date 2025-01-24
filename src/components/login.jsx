@@ -37,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto", padding: "20px", border: "1px solid #ddd", borderRadius: "10px" }}>
+    <div style={{ backgroundColor: "white",maxWidth: "400px", margin: "50px auto", padding: "20px", border: "1px solid #ddd", borderRadius: "10px" }}>
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Login</h2>
       <form onSubmit={handleLogin}>
         <div style={{ marginBottom: "15px" }}>
