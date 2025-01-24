@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <h1 className="text-3xl font-bold underline"></h1>
         <Routes>
           <Route path="/" element={<GenericInformation />} />

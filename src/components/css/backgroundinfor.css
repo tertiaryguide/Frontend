@@ -34,8 +34,8 @@ body{
   }
   .input0{
     text-align: center;
-    width: 300px;
-    height: 70px;
+    width: 1070px;
+    height: 150px;
     border: 1px solid #dfe4ea; 
     border-radius: 4px;
     background-color: #f1f3f5; 
@@ -84,8 +84,36 @@ body{
 .text h6{
     margin-left: 2px; 
 }
-h6{
-    margin-left: 10px;
+/* h6{
+    /* margin-left: 10px; 
+} */
+.document-section {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: flex-end; /* Align elements to the bottom */
+  align-items: center; /* Center-align the content horizontally */
+  height: 150px; /* Set to full viewport height */
+  text-align: center;
+}
+
+.icon-container {
+  margin-bottom: 1rem; /* Space between the icon and text */
+}
+
+.icon-container svg {
+  cursor: pointer;
+  fill: #555; /* Icon color */
+  transition: fill 0.3s ease;
+}
+
+.icon-container svg:hover {
+  fill: #000; /* Icon color on hover */
+}
+
+.h6 {
+  
+  color: #333;
+  margin-top: 0.5rem;
 }
 
 .type-container{
@@ -156,3 +184,10 @@ h6{
 margin-left: 10px;
 }
   
+@media screen and (max-width: 780px) {
+.input1, .input22 {
+  width: 95%; /* Make inputs full-width on smaller screens */
+margin-bottom: 20px; /* Adjust spacing for better readability */
+box-sizing: border-box; 
+}
+}
