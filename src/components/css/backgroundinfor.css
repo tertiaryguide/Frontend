@@ -1,193 +1,215 @@
-body{
-    background-color: #dfe4ea;
-  }
-  .Gform {
-    width: 90%;
-    height: 100%;
-    padding: 20px;
-    background-color: #fff; 
-    box-sizing: border-box;
-    margin-left: 65px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  .borders{
-   border: 1.5px solid black;
-   border-radius: 5px;
-   margin-bottom: 20px;
-  }
-  .gen{
-    margin: 60px;
-    margin-bottom: 10px;
-  }
-  .form-container {
-    display: flex;
-    margin: 10px;
-    justify-content: space-between; 
-    gap: 20px; 
-  }
-  .lform {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    
-  }
-  .input0{
-    text-align: center;
-    width: 1070px;
-    height: 150px;
-    border: 1px solid #dfe4ea; 
-    border-radius: 4px;
-    background-color: #f1f3f5; 
-  }
-  .input1, .input22, .input32{
-    width: 500px;
-    height: 30px;
-    margin-bottom: 10px;
-    border: 1px solid #dfe4ea; 
-    border-radius: 4px;
-    background-color: #f1f3f5;
-  }
-  .input2{
-    text-align: center;
-    width: 300px;
-    height: 70px;
-    border: 1px solid #dfe4ea; 
-    border-radius: 4px;
-    background-color: #f1f3f5; 
-  }
-.input3{
-    text-align: center;
-    width: 300px;
-    height: 70px;
+body {
+  background-color: #dfe4ea;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.Gform {
+  width: 90%;
+  max-width: 1200px; /* Limit max width for larger screens */
+  padding: 20px;
+  background-color: #fff; 
+  box-sizing: border-box;
+  margin: 20px auto; /* Center horizontally */
+  border-radius: 5px;
+}
+
+.borders {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.gen {
+  margin: 40px; /* Adjust for smaller screens */
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 20px; 
+}
+
+.lform {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; /* Full width for responsive layout */
+}
+
+.input0 {
+  text-align: center;
+  width: 100%; /* Full width for responsiveness */
+  height: 150px;
   border: 1px solid #dfe4ea; 
   border-radius: 4px;
   background-color: #f1f3f5; 
 }
-.input4{
-  width: 750px;
+
+.input1,
+.input22,
+.input32 {
+  width: 100%; /* Make inputs responsive */
+  height: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #dfe4ea; 
+  border-radius: 4px;
+  background-color: #f1f3f5;
+}
+
+.input2,
+.input3 {
+  text-align: center;
+  width: 100%; /* Adjusted for smaller screens */
+  height: 70px;
+  border: 1px solid #dfe4ea; 
+  border-radius: 4px;
+  background-color: #f1f3f5; 
+}
+
+.input4 {
+  width: 100%; /* Full width for responsiveness */
   height: 30px;
   margin: 2px;
   border: 1px solid #dfe4ea; 
   border-radius: 4px;
-  background-color:  #f1f3f5 ;
+  background-color: #f1f3f5;
 }
-.input5{
-  width: 320px;
+
+.input5,
+.input6,
+.input7 {
+  width: 100%; /* Full width for smaller screens */
   height: 30px;
   margin: 2px;
-  margin-left: -25px;
   border: 1px solid #dfe4ea; 
   border-radius: 4px;
-  background-color:  #f1f3f5;
+  background-color: #f1f3f5;
 }
-.text h6{
-    margin-left: 2px; 
+
+.text h6 {
+  margin-left: 2px; 
 }
-/* h6{
-    /* margin-left: 10px; 
-} */
+
 .document-section {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
-  justify-content: flex-end; /* Align elements to the bottom */
-  align-items: center; /* Center-align the content horizontally */
-  height: 150px; /* Set to full viewport height */
+  justify-content: flex-end; 
+  align-items: center; 
+  height: 150px;
   text-align: center;
 }
 
 .icon-container {
-  margin-bottom: 1rem; /* Space between the icon and text */
+  margin-bottom: 1rem; 
 }
 
 .icon-container svg {
   cursor: pointer;
-  fill: #555; /* Icon color */
+  fill: #555; 
   transition: fill 0.3s ease;
 }
 
 .icon-container svg:hover {
-  fill: #000; /* Icon color on hover */
+  fill: #000; 
 }
 
 .h6 {
-  
   color: #333;
   margin-top: 0.5rem;
 }
 
-.type-container{
+.type-container {
   display: flex;
-    margin: 10px;
-    justify-content: space-between; 
-    gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 20px;
 }
-.input6{
-  width: 500px;
-  height: 30px;
-  margin: 2px;
-  border: 1px solid #dfe4ea; 
+
+.text {
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to stack */
+  gap: 10px; /* Add space between buttons */
+  padding: 20px; 
+  width: 95%; 
+  justify-content: space-between; 
+}
+
+.go-back-button,
+.save-exit-button {
+  width: 150px; /* Share space equally on smaller screens */
+  padding: 10px;
+  font-size: 14px;
   border-radius: 4px;
-  background-color:  #f1f3f5 ;
 }
-.input7{
-  width: 530px;
-  height: 30px;
-  margin: 2px;
-  margin-right: 50px;
-  border: 1px solid #dfe4ea; 
-  border-radius: 4px;
-  background-color:  #f1f3f5 ;
+
+.go-back-button {
+  color: #6c757d; 
+  border: 1px solid #6c757d; 
+  background-color: white;
+  cursor: pointer;
 }
-  .text{
-    margin-bottom: 20px;
-    margin-left: 15px;
-  }
-  .button-container {
-    display: flex;
-    justify-content: space-between; 
-    padding: 20px; 
-    width: 94.5%;
-    margin-left: 45px;
-  }
-  
-  .go-back-button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #6c757d; 
-    border: 1px solid #6c757d; 
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
-  }
-  
-  .go-back-button:hover {
-    background-color: #f1f1f1; 
-  }
-  
-  .save-exit-button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: white;
-    border: none;
-    margin-right: 20px;
-    border-radius: 4px;
-    background-color: #007bff; 
-    cursor: pointer;
-  }
-  
-  .save-exit-button:hover {
-    background-color: #0056b3; 
-  }
-  
-.tick{
-margin-left: 10px;
+
+.go-back-button:hover {
+  background-color: #f1f1f1; 
 }
-  
+
+.save-exit-button {
+  color: white;
+  border: none;
+  background-color: #007bff; 
+  cursor: pointer;
+}
+
+.save-exit-button:hover {
+  background-color: #0056b3; 
+}
+
+.tick {
+  margin-left: 10px;
+}
+
+/* Media Queries for Smaller Screens */
 @media screen and (max-width: 780px) {
-.input1, .input22 {
-  width: 95%; /* Make inputs full-width on smaller screens */
-margin-bottom: 20px; /* Adjust spacing for better readability */
-box-sizing: border-box; 
-}
+  .Gform {
+    width: 95%; /* Full width for smaller screens */
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .form-container {
+    flex-direction: column; /* Stack fields vertically */
+    gap: 15px;
+  }
+
+  .input0,
+  .input32,
+  .input4,
+  .input5,
+  .input6,
+  .input7 {
+    width: 100%; /* Full width for smaller screens */
+    margin-bottom: 15px;
+  }
+  .input1,
+  .input22{
+    width: 95%; /* Full width for smaller screens */
+    margin-bottom: 15px;
+  }
+
+  .button-container {
+    flex-direction: column; /* Stack buttons */
+    width: 100%;
+    gap: 10px;
+  }
+
+  .go-back-button,
+  .save-exit-button {
+    width: 100%; /* Full width for buttons on smaller screens */
+  }
 }

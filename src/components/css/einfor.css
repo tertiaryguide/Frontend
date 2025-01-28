@@ -1,4 +1,4 @@
-Universal styling for better responsiveness
+/* Universal styling for better responsiveness */
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +8,8 @@ Universal styling for better responsiveness
 body {
   background-color: #dfe4ea;
   font-family: Arial, sans-serif;
+  margin: 0; /* Ensure no extra margins */
+  padding: 0;
 }
 
 .Gform {
@@ -15,7 +17,7 @@ body {
   max-width: 1200px; /* Add max-width for larger screens */
   padding: 20px;
   background-color: #fff;
-  margin: 0 auto; /* Center the form on large screens */
+  margin: 0 auto; /* Center the form */
 }
 
 .gen {
@@ -46,55 +48,25 @@ body {
   border-radius: 4px;
   background-color: #f1f3f5;
 }
-.input668{
-  width: 225px; /* Make inputs responsive */
+
+.input668 {
+  width: 100%; /* Use percentage for responsiveness */
   height: 30px;
-  margin-top: -20px;
   margin: 2px;
-  margin-left: 25px;
   border: 1px solid #dfe4ea;
   border-radius: 4px;
   background-color: #f1f3f5;
 }
-.input11{
-  width: 500px;
-    height: 30px;
-    margin-bottom: 10px;
-    border: 1px solid #dfe4ea; 
-    border-radius: 4px;
-    background-color: #f1f3f5;
-}
-.input111{
-  width: 780px;;
+
+.input11,
+.input111,
+.input112 {
+  width: 100%;
   height: 30px;
-  margin-bottom: 5px;
-  border: 1px solid #dfe4ea; 
+  margin-bottom: 10px;
+  border: 1px solid #dfe4ea;
   border-radius: 4px;
   background-color: #f1f3f5;
-}
-.input112{
-  width: 250px;
-  height: 30px;
-  margin-bottom: 5px;
-  border: 1px solid #dfe4ea; 
-  border-radius: 4px;
-  background-color: #f1f3f5;
-}
-.input3 {
-  max-width: 250px; /* Limit max width */
-}
-
-.input4 {
-  max-width: 750px; /* Limit max width */
-}
-
-.input44 {
-  max-width: 1070px; /* Limit max width */
-}
-
-.input5 {
-  max-width: 320px; /* Limit max width */
-  margin-left: -25px;
 }
 
 .type-container {
@@ -145,10 +117,16 @@ body {
 
 /* Media Query for Screens Smaller than 780px */
 @media screen and (max-width: 780px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   .Gform {
     width: 100%; /* Use full width on smaller screens */
-    margin-left: 0;
+    margin: 0; /* Center the form and remove excess space */
     padding: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
   }
 
   .form-container {
@@ -165,13 +143,12 @@ body {
     width: 100%; /* Ensure inputs take full width */
     margin-bottom: 15px;
   }
-  .input112, .input111{
-    width: 100%; /* Ensure inputs take full width */
-    margin-bottom: 5px;
+
+  .input112, .input111, .input668 {
+    width: 100%; /* Fully responsive */
+    margin-bottom: 10px;
   }
-  .input668{
-    width: 90%;
-  }
+
   /* Adjust button styling */
   .go-back-button, .save-exit-button {
     width: 100%; /* Make buttons full-width */

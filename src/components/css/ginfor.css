@@ -109,26 +109,26 @@ h1, h6 {
 @media screen and (max-width: 780px) {
   .gForm {
     display: flex;
-    flex-direction: column; /* Ensures the form items stack */
+    flex-direction: column; 
     width: 100%;
     margin-left: 0;
   }
 
   .form-container {
     display: flex;
-    flex-direction: column; /* Stacks form fields vertically */
+    flex-direction: column;
     width: 100%;
   }
 
   .lform {
     display: flex;
-    flex-direction: column; /* Ensure labels and inputs align properly */
+    flex-direction: column; 
     width: 100%;
   }
 
   .input1, .input22, .input66, .input667 {
-    width: 100%; /* Make inputs full-width on smaller screens */
-    margin-bottom: 20px; /* Adjust spacing for better readability */
-    box-sizing: border-box; /* Ensures padding doesn't overflow */
+    width: 100%; 
+    margin-bottom: 20px; 
+    box-sizing: border-box; 
   }
 }
