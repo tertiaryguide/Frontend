@@ -6,9 +6,9 @@ const Navbar = () => {
     <header className="header">
       <div className="container">
         <nav className="navbar">
-          <img src="./logo.png" alt='logo' />
+          <img src="public/Logomark.png" alt='logo' />
           <ul className="nav-links">
-            <li><Link to="/" className="link">Background</Link></li>
+            <li><Link to="/background" className="link">Background</Link></li>
             <li><Link to="/education" className="link">Aspiration</Link></li>
             <li><Link to="/support" className="link">Support</Link></li>
           </ul>
