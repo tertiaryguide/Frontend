@@ -11,15 +11,8 @@ import SupportingInfor from './components/supporting';
 function App() {
   return (
     <Router>
-<<<<<<< HEAD
       <div>
-        {/* <Navbar /> */}
-        <h1 className="text-3xl font-bold underline"></h1>
-=======
-      <div style={{padding: '10px'}}>
         <Navbar />
-        {/* <h1 className="text-3xl font-bold underline"></h1> */}
->>>>>>> dde7ac207785b1c47f03e5d7a142d281d717e98d
         <Routes>
           <Route path="/" element={<BackgroundInfor />} />
           <Route path="/education" element={<EducationalBackround />} />
