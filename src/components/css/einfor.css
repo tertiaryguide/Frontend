@@ -11,7 +11,11 @@ body {
   margin: 0; /* Ensure no extra margins */
   padding: 0;
 }
-
+.subject-grade-row{
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 30px;
+}
 .Gform {
   width: 90%;
   max-width: 1200px; /* Add max-width for larger screens */
