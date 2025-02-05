@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/backgroundinfor.css'
+import './css/supporting.css'
 import { useNavigate } from "react-router-dom";
 
 const BackgroundInfor = () => {
@@ -58,13 +58,13 @@ const BackgroundInfor = () => {
         </div>
         <div className='borders'>
         <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                   <label htmlFor="">Father's Name</label>
                   <input className='input1' type="text" id="School" name="School"/>
                   <label htmlFor="">Nationality</label>
                   <input className='input1' type="text" id="School" name="School"/>
                 </div>
-                <div className='lform'>
+                <div className='division'>
                   <label htmlFor="">Ocupation</label>
                   <input  className='input22' type="text"  id="Program" name="Prgram" />
                   <label htmlFor="">Email/Contact</label>
@@ -77,13 +77,13 @@ const BackgroundInfor = () => {
               </div>
               <div className='borders'>
         <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                   <label htmlFor="">Mother's Name</label>
                   <input className='input1' type="text" id="School" name="School"/>
                   <label htmlFor="">Nationality</label>
                   <input className='input1' type="text" id="School" name="School"/>
                 </div>
-                <div className='lform'>
+                <div className='division'>
                   <label htmlFor="">Occupation</label>
                   <input  className='input22' type="text"  id="Program" name="Prgram" />
                   <label htmlFor="">Email/Contact</label>

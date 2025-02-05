@@ -25,7 +25,7 @@ const GenericInformation = () => {
         <h2>Background Information</h2>
         <h6>This data is automatically sent to the school you applied to.</h6>
         <form className='form-container'>
-            <div className='lform'>
+            <div className='division'>
               <label className='surname' htmlFor="surname">Surname</label> <br />
               <input className='input667' type="text" id="surname" name="surname" />
               <br />
@@ -44,7 +44,7 @@ const GenericInformation = () => {
                 )}
             </div>
             </div>
-            <div className='blform'>
+            <div className='min-division'>
                   <label htmlFor="">Other name </label>
                   <input  className='input667' type="text"  id="Program" name="Prgram" />
                   <br />
@@ -61,25 +61,25 @@ const GenericInformation = () => {
         </form>
         <br />
         <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                   <label htmlFor="">City/Town</label>
                   <input className='input66' type="text" id="School" name="School"/>
                 </div>
-                <div className='lform'>
+                <div className='division'>
                   <label htmlFor="">Digital Address</label>
                   <input  className='input66' type="text"  id="Program" name="Prgram" />
                 </div>
-                  <div className='lform'>
+                  <div className='division'>
                   <label htmlFor="">Home Address</label>
                   <input className='input66' type="text"  id="Batch" name="Batch" />
                   </div>
               </form>
               <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                   <label htmlFor="">Email</label>
                   <input className='input667' type="text" id="School" name="School"/>
                 </div>
-                <div className='lform'>
+                <div className='division'>
                   <label htmlFor="">Contact</label>
                   <input  className='input667 m-lg-1' type="text"  id="Program" name="Prgram" />
                 </div>

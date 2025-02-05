@@ -23,12 +23,12 @@ h1, h6 {
 .surname{
   margin-bottom: -15px;
 }
-  .lform {
+  .division {
     display: flex;
     flex-direction: column; 
     align-items: flex-start; 
   }
-  .blform{
+  .min-division{
     margin-top: 5px;
     display: flex;
     flex-direction: column; 

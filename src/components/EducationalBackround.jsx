@@ -22,57 +22,44 @@ const EducationalBackround = () => {
      <h6>This data is automatically sent to the school you applied to.</h6>
      </div>
     <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                   <label htmlFor="">School</label>
                   <input className='input11' type="text" id="School" name="School"/>
                 </div>
-                <div className='lform'>
+                <div className='division'>
                   <label htmlFor="">Prgram</label>
                   <input  className='input668' type="text"  id="Program" name="Prgram" />
                 </div>
-                  <div className='lform'>
+                  <div className='division'>
                   <label htmlFor="">Batch</label>
                   <input className='input668' type="text"  id="Batch" name="Batch" />
                   </div><br />
                   
               </form>
               <div className='type-container'>
-              <div className='lform'>
+              <div className='division'>
                 <label htmlFor="">Examination Type</label><br />
                   <input className='input11' type="text" id="School" name="School"/>
                   </div>
-                  <div className='lform'>
+                  <div className='division'>
                     <label htmlFor="">Index Number</label><br />
                   <input  className='input11' type="text"  id="Program" name="Prgram" />
                   </div>
               </div>
 
               <form className='type-container'>
-                <div className='lform'> 
+                <div className='division'> 
                     <label htmlFor="">Subject</label>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
-                  <input className='input111' type="text" id="School" name="School"/>
+                  {Array(10).fill(null).map((_, index) => (
+  <input key={index} className="input111" type="text" id={`School${index}`} name="School" />
+))}
+
                 </div>
-                <div className='lform'>
+                <div className='division'>
                     <label htmlFor="">Score</label>
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
-                  <input  className='input112' type="text"  id="Program" name="Prgram" />
+                    {Array(10).fill(null).map((_, index) => (
+  <input key={index} className="input112" type="text" id={`program${index}`} name="program" />
+))}
                 </div>
               </form>
     </div>
@@ -84,18 +71,11 @@ const EducationalBackround = () => {
      </div>
      <div className='f-container'>
     <form className='form-container'>
-                <div className='lform'> 
+                <div className='division'> 
                     <label htmlFor="">According to priority</label>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
-                  <input className='input44' type="text" id="School" name="School"/>
+                    {Array(10).fill(null).map((_, index) => (
+  <input key={index} className="input44" type="text" id={`School${index}`} name="School" />
+))}
                 </div>
                 
               </form>
