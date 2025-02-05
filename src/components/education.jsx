@@ -72,7 +72,7 @@ const EducationalBackground = () => {
           <div className="lform">
             <label htmlFor="course">Course of Study</label>
             <input
-              className="input66"
+              className="input6"
               type="text"
               id="course"
               name="course"
@@ -83,7 +83,7 @@ const EducationalBackground = () => {
           <div className="lform">
             <label htmlFor="year">Batch</label>
             <input
-              className="input66"
+              className="input6"
               type="text"
               id="year"
               name="year"
@@ -131,13 +131,18 @@ const EducationalBackground = () => {
                 value={result.subject}
                 onChange={(e) => handleChange(index, "subject", e.target.value)}
               />
-              <input
-                className="input5"
-                type="text"
-                placeholder="Grade"
-                value={result.grade}
-                onChange={(e) => handleChange(index, "grade", e.target.value)}
-              />
+              <select onChange={(e) => handleChange(index, "grade", e.target.value)} className="input6 w-full border border-gray-300 p-3 rounded-md bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option className="input5" value="">select</option>
+                <option className="input5" value="a1">A1</option>
+                <option className="input5" value="b2">B2</option>
+                <option className="input5" value="b3">B3</option>
+                <option className="input5" value="c4">C4</option>
+                <option className="input5" value="c5">C5</option>
+                <option className="input5" value="c6">C6</option>
+                <option className="input5" value="d7">D7</option>
+                <option className="input5" value="e8">E8</option>
+                <option className="input5" value="f9">F9</option>
+              </select>
             </div>
           ))}
         </div>

@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/preview" element={<Preview />} />
