@@ -85,12 +85,6 @@ body {
   margin-bottom: 20px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
 .go-back-button {
   padding: 10px 20px;
   font-size: 14px;

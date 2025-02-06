@@ -131,14 +131,6 @@ body {
   margin-left: 15px;
 }
 
-.button-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow buttons to stack */
-  gap: 10px; /* Add space between buttons */
-  padding: 20px; 
-  width: 95%; 
-  justify-content: space-between; 
-}
 
 .go-back-button,
 .save-exit-button {
@@ -202,11 +194,7 @@ body {
     margin-bottom: 15px;
   }
 
-  .button-container {
-    flex-direction: column; /* Stack buttons */
-    width: 100%;
-    gap: 10px;
-  }
+
 
   .go-back-button,
   .save-exit-button {

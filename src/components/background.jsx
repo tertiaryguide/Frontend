@@ -50,6 +50,8 @@ const BackgroundInformation = () => {
         <div>Loading...</div>
       ) : (
         <>
+        <Navbar />
+
           <div className="gForm">
             <h2>Background Information</h2>
             <h6>
