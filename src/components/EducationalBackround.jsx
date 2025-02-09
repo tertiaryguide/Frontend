@@ -29,10 +29,17 @@ const EducationalBackground = () => {
     try {
       setIsLoading(true);
       await axios.post(
-        "http://localhost:8000/api/applicants/academic-history",
+        "http://localhost:8000/api/applicant/academic-history",
         {
           applicantId: userID,
           backgroundData: values,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${getCookie("token")}`,
+          },
         }
       );
       navigate("/backgroundInfor");

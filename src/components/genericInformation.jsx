@@ -13,7 +13,6 @@ const initial = {
   placeOfResidence: "",
   digitalAddress: "",
   homeAddress: "",
-  email: "",
   contact: "",
 };
 
@@ -25,9 +24,15 @@ const GenericInformation = () => {
   const handleClick = async () => {
     try {
       setIsLoading(true);
-      await axios.post("http://localhost:8000/api/applicants/background-data", {
+      await axios.post("http://localhost:8000/api/applicant/background-data", {
         applicantId: userID,
         backgroundData: values,
+      }, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${getCookie("token")}`,
+        },
       });
       navigate("/educational-background");
     } catch (error) {
@@ -139,17 +144,6 @@ const GenericInformation = () => {
               </div>
 
               <div className="grid grid-cols-2">
-                <div className="">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    onChange={(e) =>
-                      setValues({ ...values, email: e.target.value })
-                    }
-                  />
-                </div>
                 <div className="">
                   <label htmlFor="contact">Contact</label>
                   <input

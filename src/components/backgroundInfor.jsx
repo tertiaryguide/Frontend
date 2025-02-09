@@ -56,10 +56,17 @@ const BackgroundInfor = () => {
   const handleSaveAndExit = async () => {
     try {
       setIsLoading(true);
-      await axios.post("http://localhost:8000/api/applicants/caretaker-data", {
+      await axios.post(`http://localhost:8000/api/applicant/caretaker-data`, {
         applicantId: userID,
         caretakerData: parentData,
-      });
+      },
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${getCookie("token")}`,
+      },
+    });
       setShowPop(true);
     } catch (error) {
       console.error("Error saving background data:", error);
