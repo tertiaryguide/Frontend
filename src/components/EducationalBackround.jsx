@@ -48,9 +48,9 @@ const EducationalBackground = () => {
 
   return (
     <>
-      <div className="Gform">
+      <div className="Gform ">
         <div className="text">
-          <h2>Educational Information</h2>
+          <h2 className="">Educational Information</h2>
           <h6>This data is automatically sent to the school you applied to.</h6>
         </div>
         <form className="form-container">
