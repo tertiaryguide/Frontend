@@ -3,9 +3,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { setCookie } from "../../lib/utils";
 import { useAuth } from "./AuthContext";
-import toast, { Toaster } from "react-hot-toast";
-
-const Login = () => {
+import toast, { Toaster } from 'react-hot-toast';
+const Register = () => {
   const [email, setEmail] = useState("");
   const [passKey, setPassKey] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -13,9 +12,9 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { assignToken } = useAuth();
+  const {assignToken} = useAuth()
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const validateEmail = () => {
       if (!email) {
@@ -44,7 +43,7 @@ const Login = () => {
     if (validateEmail(email) && validatePassword(passKey)) {
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/applicant/login",
+          "http://localhost:8000/api/applicant/create-applicant",
           {
             email,
             passKey,
@@ -59,10 +58,10 @@ const Login = () => {
 
         if (response.data.success) {
           setCookie("token", response.data.token, 30);
-          assignToken(response.data.token);
+          assignToken(response.data.token)
           navigate("/");
         } else {
-          setErrorMessage(response.data.message || "Login failed.");
+          setErrorMessage(response.data.message || "Register failed.");
         }
       } catch (error) {
         console.error("Error logging in:", error);
@@ -86,7 +85,7 @@ const Login = () => {
       }}
     >
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleRegister}
         style={{
           backgroundColor: "white",
           width: "400px",
@@ -95,7 +94,7 @@ const Login = () => {
           borderRadius: "10px",
         }}
       >
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Login</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Activate Account</h2>
         <div style={{ marginBottom: "15px" }}>
           <label
             htmlFor="email"
@@ -161,15 +160,17 @@ const Login = () => {
           }}
           disabled={isLoading}
         >
-          {isLoading ? "Logging in..." : "Login"}
+          {isLoading ? "Creating account..." : "Register"}
         </button>
-        {errorMessage && toast.error(errorMessage)}
+        {errorMessage && (
+          toast.error(errorMessage)
+        )}
       </form>
       <p style={{ marginTop: "20px", textAlign: "center" }}>
-        Haven't activated your account? <Link to="/register">Activate now</Link>
+        Have you already activated your account? <Link to="/login">Sign in here</Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default Register;
