@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route element={<PrivateRoutes />}>
             {" "}
-            <Route path="/" element={<Preview />} />
+            <Route path="/preview" element={<Preview />} />
             <Route path="/background" element={<GenericInformation />} />
             <Route path="/education" element={<EducationalBackground />} />
             <Route path="/supporting" element={<BackgroundInfor />} />{" "}

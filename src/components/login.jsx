@@ -1,77 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { setCookie } from "../../lib/utils";
+import { Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [passKey, setPassKey] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const { assignToken } = useAuth();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const validateEmail = () => {
-      if (!email) {
-        setEmailError("Email is required");
-        return false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setEmailError("Invalid email format");
-        return false;
-      } else {
-        setEmailError("");
-        return true;
-      }
-    };
-    const validatePassword = () => {
-      if (!passKey) {
-        setPasswordError("Password is required");
-        return false;
-      } else {
-        setPasswordError("");
-        return true;
-      }
-    };
-    console.log(passKey, email);
-    setErrorMessage("");
-    setIsLoading(true);
-    if (validateEmail(email) && validatePassword(passKey)) {
-      try {
-        const response = await axios.post(
-          "http://localhost:8000/api/applicant/login",
-          {
-            email,
-            passKey,
-          },
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (response.data.success) {
-          setCookie("token", response.data.token, 30);
-          assignToken(response.data.token);
-          navigate("/");
-        } else {
-          setErrorMessage(response.data.message || "Login failed.");
-        }
-      } catch (error) {
-        console.error("Error logging in:", error);
-        setErrorMessage("An error occurred. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    } else {
-    }
+    await login(email, passKey, setIsLoading)
   };
 
   return (
@@ -116,9 +56,6 @@ const Login = () => {
             }}
             required
           />
-          {emailError && (
-            <p style={{ color: "red", marginBottom: "15px" }}>{emailError}</p>
-          )}
         </div>
         <div style={{ marginBottom: "15px" }}>
           <label
@@ -140,11 +77,6 @@ const Login = () => {
             }}
             required
           />
-          {passwordError && (
-            <p style={{ color: "red", marginBottom: "15px" }}>
-              {passwordError}
-            </p>
-          )}
         </div>
 
         <button
@@ -163,7 +95,6 @@ const Login = () => {
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
-        {errorMessage && toast.error(errorMessage)}
       </form>
       <p style={{ marginTop: "20px", textAlign: "center" }}>
         Haven't activated your account? <Link to="/register">Activate now</Link>
