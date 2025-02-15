@@ -2,19 +2,24 @@ import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { setCookie } from "../../lib/utils";
+import { getCookie, removeCookie, setCookie } from "../../lib/utils";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // NEW STATE
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate();
 
-
-  console.log(token, isLoggedIn, errorMessage, successMessage)
+  // Retrieve token from cookies on app load
+  useEffect(() => {
+    const storedToken = getCookie("token");
+    if (storedToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   // Handle error messages
   useEffect(() => {
@@ -44,7 +49,6 @@ export const AuthProvider = ({ children }) => {
   }, [isLoggedIn, navigate]);
 
   const login = async (email, passKey, setIsLoading) => {
-    // Email validation
     const validateEmail = () => {
       if (!email) {
         setErrorMessage("Email is required");
@@ -58,7 +62,6 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
-    // Password validation
     const validatePassword = () => {
       if (!passKey) {
         setErrorMessage("Password is required");
@@ -72,7 +75,6 @@ export const AuthProvider = ({ children }) => {
     setErrorMessage("");
     setIsLoading(true);
 
-    // Proceed if validations pass
     if (validateEmail(email) && validatePassword(passKey)) {
       try {
         const response = await axios.post(
@@ -91,14 +93,11 @@ export const AuthProvider = ({ children }) => {
 
         console.log("Login response:", response.data);
 
-        // Check if login is successful
         if (response.data) {
-          setCookie("token", response.data.token, 30);
-          setToken(response.data.token);
+          setCookie("token", response.data.token, 30); // Store token in cookie
+          setCookie("userId", response.data.id, 30) // Store userId in cookie
           setSuccessMessage("Login successful");
-
-          // Set new state to trigger navigation
-          setIsLoggedIn(true); 
+          setIsLoggedIn(true);
         } else {
           setErrorMessage("Login failed.");
         }
@@ -112,7 +111,6 @@ export const AuthProvider = ({ children }) => {
       setErrorMessage("An error occurred. Please try again.");
     }
   };
-
   const register = async (email, passKey, setIsLoading) => {
     const validateEmail = () => {
       if (!email) {
@@ -156,18 +154,18 @@ export const AuthProvider = ({ children }) => {
           }
         );
 
-        console.log("Registration response:", response.data);
+        console.log("Activation response:", response.data);
 
         if (response.data) {
-          setCookie("token", response.data.token, 30);
-          setToken(response.data.token);
+          setCookie("token", response.data.token, 30); // Store token in cookie
+          setCookie("userId", response.data.id, 30) // Store userId in cookie
           setSuccessMessage("Account activation successful");
           setIsLoggedIn(true);
         } else {
           setErrorMessage("Account activation failed.");
         }
       } catch (error) {
-        console.error("Error registering:", error);
+        console.error("Error activating account in:", error);
         setErrorMessage("An error occurred. Please try again.");
       } finally {
         setIsLoading(false);
@@ -176,13 +174,13 @@ export const AuthProvider = ({ children }) => {
       setErrorMessage("An error occurred. Please try again.");
     }
   };
-
   const logout = () => {
-    setToken(null);
     setIsLoggedIn(false);
+    removeCookie("token"); // Remove token from cookie
+    navigate("/login");
   };
 
-  const isAuthenticated = !!token;
+  const isAuthenticated = !!getCookie("token"); // Check if token exists
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, register, login, logout }}>
