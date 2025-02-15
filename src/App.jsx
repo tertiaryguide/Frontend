@@ -13,23 +13,23 @@ import Register from "./components/register";
 import { Toaster } from "react-hot-toast";
 function App() {
   return (
-    <Router>
-      <Toaster/>
-      <AuthProvider>
-        {" "}
-        <Routes>
-          <Route element={<PrivateRoutes />}>
-            {" "}
-            <Route path="/preview" element={<Preview />} />
-            <Route path="/background" element={<GenericInformation />} />
-            <Route path="/education" element={<EducationalBackground />} />
-            <Route path="/supporting" element={<BackgroundInfor />} />{" "}
-          </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </AuthProvider>
-    </Router>
+  <Router>
+<AuthProvider>
+    <Toaster/>
+    <Routes>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/preview" element={<Preview />} />
+        <Route path="/background" element={<GenericInformation />} />
+        <Route path="/education" element={<EducationalBackground />} />
+        <Route path="/supporting" element={<BackgroundInfor />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+</AuthProvider>
+  </Router>
+
+
   );
 }
 

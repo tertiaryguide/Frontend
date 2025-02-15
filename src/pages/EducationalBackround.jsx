@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/einfor.css";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../lib/utils";
 import axios from "axios";
 
-const userID = getCookie("userID");
 
 const initial = {
   indexNumber: "",
@@ -12,14 +11,22 @@ const initial = {
   year: "",
   course: "",
   examsType: "",
-  results: Array(10).fill({ subject: "", grade: "" }),
+  results: Array.from({ length: 8 }, () => ({ subject: "", grade: "" })),
 };
 
 const EducationalBackground = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
-
+    const [userID, setUserID] = useState(null);
+    const [token, setToken] = useState(null);
+  // Get userID and token after component mounts
+  useEffect(() => {
+    const storedUserID = getCookie("userId");
+    const storedToken = getCookie("token");
+    setUserID(storedUserID);
+    setToken(storedToken);
+  }, []);
   const handleChange = (index, field, value) => {
     const updatedResults = [...values.results];
     updatedResults[index][field] = value;
@@ -38,7 +45,7 @@ const EducationalBackground = () => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${getCookie("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -136,8 +143,9 @@ const EducationalBackground = () => {
                   placeholder="Subject"
                   value={result.subject}
                   onChange={(e) =>
-                    handleChange(index, "subject", e.target.value)
+                    handleChange(index, `subject`, e.target.value)
                   }
+                  name={`subject-${index}`} // Add this line
                 />
                 <select
                   onChange={(e) => handleChange(index, "grade", e.target.value)}

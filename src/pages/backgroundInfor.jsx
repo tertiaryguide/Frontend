@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/supporting.css";
 import { useNavigate } from "react-router-dom";
-import MultipleFileUpload from "./file-upload";
-import CongratulatoryPopUp from "./congratulatory-popup";
+import MultipleFileUpload from "../components/file-upload";
+import CongratulatoryPopUp from "../components/congratulatory-popup";
 import axios from "axios";
 import { getCookie } from "../../lib/utils";
 
@@ -31,7 +31,15 @@ const BackgroundInfor = () => {
   const [showPop, setShowPop] = useState(false);
   const [parentData, setParentData] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
-
+    const [userID, setUserID] = useState(null);
+    const [token, setToken] = useState(null);
+  // Get userID and token after component mounts
+  useEffect(() => {
+    const storedUserID = getCookie("userId");
+    const storedToken = getCookie("token");
+    setUserID(storedUserID);
+    setToken(storedToken);
+  }, []);
   const handleInputChange = (e, parent) => {
     const { name, value } = e.target;
     setParentData((prev) => ({
@@ -64,7 +72,7 @@ const BackgroundInfor = () => {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${getCookie("token")}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
       setShowPop(true);

@@ -43,7 +43,8 @@ export const AuthProvider = ({ children }) => {
 
   // Navigate after successful login
   useEffect(() => {
-    if (isLoggedIn) {
+    // Redirect to /preview only if navigating from /login
+    if (isLoggedIn && window.location.pathname === "/login") {
       navigate("/preview");
     }
   }, [isLoggedIn, navigate]);
@@ -180,7 +181,13 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
-  const isAuthenticated = !!getCookie("token"); // Check if token exists
+  const [isAuthenticated, setIsAuthenticated] = useState(!!getCookie("token"));
+
+  useEffect(() => {
+    const storedToken = getCookie("token");
+    setIsAuthenticated(!!storedToken);
+  }, []);
+  
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, register, login, logout }}>

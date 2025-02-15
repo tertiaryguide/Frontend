@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/ginfor.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,7 +20,15 @@ const GenericInformation = () => {
   const [values, setValues] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+    const [userID, setUserID] = useState(null);
+    const [token, setToken] = useState(null);
+  // Get userID and token after component mounts
+  useEffect(() => {
+    const storedUserID = getCookie("userId");
+    const storedToken = getCookie("token");
+    setUserID(storedUserID);
+    setToken(storedToken);
+  }, []);
   const handleClick = async () => {
     try {
       setIsLoading(true);
@@ -31,7 +39,7 @@ const GenericInformation = () => {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${getCookie("token")}`,
+          "Authorization": `Bearer ${token}`,
         },
       });
       navigate("/educational-background");
