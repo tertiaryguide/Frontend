@@ -1,10 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { getCookie } from "../../lib/utils";
-import { useAuth } from "../components/AuthContext";
-import BackgroundInfor from "../components/backgroundInfor";
-import EducationalBackground from "../components/EducationalBackround";
-import GenericInformation from "../components/genericInformation";
+import { useAuth } from "../contexts/AuthContext";
 const checkIncompleteFields = (data) => {
   const incompleteFields = [];
 

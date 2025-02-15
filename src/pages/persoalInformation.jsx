@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/ginfor.css";
+import "../css/ginfor.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie } from "../../lib/utils";
@@ -16,7 +16,7 @@ const initial = {
   contact: "",
 };
 
-const GenericInformation = () => {
+const PersonalInformationPage = () => {
   const [values, setValues] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -177,4 +177,4 @@ const GenericInformation = () => {
   );
 };
 
-export default GenericInformation;
+export default PersonalInformationPage;

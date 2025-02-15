@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/supporting.css";
+import "../css/supporting.css";
 import { useNavigate } from "react-router-dom";
 import MultipleFileUpload from "../components/file-upload";
 import CongratulatoryPopUp from "../components/congratulatory-popup";
@@ -26,7 +26,7 @@ const initial = {
   },
 };
 
-const BackgroundInfor = () => {
+const SupportingPage = () => {
   const navigate = useNavigate();
   const [showPop, setShowPop] = useState(false);
   const [parentData, setParentData] = useState(initial);
@@ -269,4 +269,4 @@ const BackgroundInfor = () => {
   );
 };
 
-export default BackgroundInfor;
+export default SupportingPage;

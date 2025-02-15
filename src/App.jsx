@@ -1,16 +1,17 @@
 import "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import Login from "./components/login";
-import Preview from "./components/preview";
-import GenericInformation from "./components/genericInformation";
-import EducationalBackground from "./components/EducationalBackround";
-import BackgroundInfor from "./components/backgroundInfor";
+import Login from "./pages/login";
 import "./App.css";
-import { AuthProvider } from "./components/AuthContext";
 import PrivateRoutes from "./components/private-routes";
-import Register from "./components/register";
 import { Toaster } from "react-hot-toast";
+import Preview from "./pages/preview";
+import PersonalInformationPage from "./pages/persoalInformation";
+import EducationPage from "./pages/education";
+import SupportingPage from "./pages/supporting";
+import Register from "./pages/register";
+import { AuthProvider } from "./contexts/AuthContext";
+
 function App() {
   return (
   <Router>
@@ -19,9 +20,9 @@ function App() {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path="/preview" element={<Preview />} />
-        <Route path="/background" element={<GenericInformation />} />
-        <Route path="/education" element={<EducationalBackground />} />
-        <Route path="/supporting" element={<BackgroundInfor />} />
+        <Route path="/background" element={<PersonalInformationPage />} />
+        <Route path="/education" element={<EducationPage />} />
+        <Route path="/supporting" element={<SupportingPage />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/einfor.css";
+import "../css/einfor.css";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../lib/utils";
 import axios from "axios";
@@ -14,7 +14,7 @@ const initial = {
   results: Array.from({ length: 8 }, () => ({ subject: "", grade: "" })),
 };
 
-const EducationalBackground = () => {
+const EducationPage = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
@@ -242,4 +242,4 @@ const EducationalBackground = () => {
   );
 };
 
-export default EducationalBackground;
+export default EducationPage;
