@@ -1,5 +1,5 @@
 import React from "react";
-import partyImage from "../../public/icons/party.png";
+import partyImage from "../assets/icons/party.png";
 
 const CongratulatoryPopUp = ({ isVisible, onClose }) => {
   if (!isVisible) return null; // Don't render the modal if it's not visible

@@ -80,18 +80,25 @@
 
 // export default SingleFileUpload;
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getCookie } from "../../lib/utils";
 
-const userID = getCookie("userID");
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedField, setSelectedField] = useState(""); // Store document type
   const [uploadedUrl, setUploadedUrl] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-
+    const [userID, setUserID] = useState(null);
+    const [token, setToken] = useState(null);
+  // Get userID and token after component mounts
+  useEffect(() => {
+    const storedUserID = getCookie("userId");
+    const storedToken = getCookie("token");
+    setUserID(storedUserID);
+    setToken(storedToken);
+  }, []);
   // Handle file selection
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -111,7 +118,13 @@ const FileUpload = () => {
 
     const response = await axios.post(
       "https://api.cloudinary.com/v1_1/difk80lzg/image/upload",
-      formData
+      formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
     );
 
     return response.data.secure_url; // URL of the uploaded file
@@ -131,7 +144,7 @@ const FileUpload = () => {
       setUploadedUrl(fileUrl);
 
       // Send URL and document type to backend for storage
-      await axios.post(`http://localhost:8000/api/${userID}/upload-file`, {
+      await axios.post(`http://localhost:8000/api/applicant/${userID}/upload-file`, {
         fileUrl,
         selectedField,
       });

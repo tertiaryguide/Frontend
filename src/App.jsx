@@ -14,23 +14,21 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-  <Router>
-<AuthProvider>
-    <Toaster/>
-    <Routes>
-      <Route element={<PrivateRoutes />}>
-        <Route path="/preview" element={<Preview />} />
-        <Route path="/background" element={<PersonalInformationPage />} />
-        <Route path="/education" element={<EducationPage />} />
-        <Route path="/supporting" element={<SupportingPage />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-</AuthProvider>
-  </Router>
-
-
+    <Router>
+      <AuthProvider>
+        <Toaster />
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/preview" element={<Preview />} />
+            <Route path="/background" element={<PersonalInformationPage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/supporting" element={<SupportingPage />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 
