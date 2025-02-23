@@ -56,7 +56,7 @@ const PersonalInformationPage = () => {
       ) : (
         <>
           <div className="gForm">
-            <h2>Background Information</h2>
+            <h2>Personal Information</h2>
             <h6>
               This data is automatically sent to the school you applied to.
             </h6>

@@ -11,6 +11,7 @@ import EducationPage from "./pages/education";
 import SupportingPage from "./pages/supporting";
 import Register from "./pages/register";
 import { AuthProvider } from "./contexts/AuthContext";
+import FileUpload from "./pages/file-upload";
 
 function App() {
   return (
@@ -20,11 +21,13 @@ function App() {
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route path="/preview" element={<Preview />} />
-            <Route path="/background" element={<PersonalInformationPage />} />
-            <Route path="/education" element={<EducationPage />} />
-            <Route path="/supporting" element={<SupportingPage />} />
+            <Route path="/personal-info" element={<PersonalInformationPage />} />
+            <Route path="/academic-info" element={<EducationPage />} />
+            <Route path="/guardian-info" element={<SupportingPage />} />
+            <Route path="/upload-documents" element={<FileUpload />} />
+
           </Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </AuthProvider>

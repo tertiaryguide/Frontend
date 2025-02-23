@@ -95,7 +95,7 @@ const Register = () => {
         </button>
       </form>
       <p style={{ marginTop: "20px", textAlign: "center" }}>
-        Have you already activated your account? <Link to="/login">Sign in here</Link>
+        Have you already activated your account? <Link to="/">Sign in here</Link>
       </p>
     </div>
   );

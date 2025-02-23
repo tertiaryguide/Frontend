@@ -10,15 +10,19 @@ const checkIncompleteFields = (data) => {
     !data?.backgroundData?.otherNames || 
     !data?.backgroundData?.dateOfBirth
   ) {
-    incompleteFields.push({ section: "Personal Information", link: "/complete-personal-info" });
+    incompleteFields.push({ section: "Personal Information", link: "/personal-info" });
   }
 
   if (data?.academicHistory?.results?.length === 0) {
-    incompleteFields.push({ section: "Academic History", link: "/complete-academic-history" });
+    incompleteFields.push({ section: "Academic History", link: "/academic-info" });
   }
 
   if (data?.academicAspiration?.length === 0) {
-    incompleteFields.push({ section: "Academic Aspiration", link: "/complete-academic-aspiration" });
+    incompleteFields.push({ section: "Academic Aspiration", link: "/academic-aspiration" });
+  }
+
+  if (data?.guardianInfo?.length === 0) {
+    incompleteFields.push({ section: "Guardian Information", link: "/guardian-info" });
   }
 
   if (data?.documents?.length === 0) {
@@ -83,7 +87,7 @@ const Preview = () => {
         <h1>Preview</h1>
         <button onClick={async () => await logout()}>Log Out</button>
       </header>
-      <section className="border p-4 rounded-md ">
+      <section className="border p-4 rounded-lg ">
         <h2>Personal Information</h2>
         {data && (
           <div className="space-y-4">
@@ -91,7 +95,7 @@ const Preview = () => {
               <label>Email</label>
               <input value={data?.email} disabled className="border p-2 rounded-md w-full"/>
             </div>
-            <div>
+            {/* <div>
               <label>Surname</label>
               <input 
                 value={data?.backgroundData?.surname || ""}
@@ -117,14 +121,14 @@ const Preview = () => {
                 disabled={editOff}
                 className="border p-2 rounded-md w-full"
               />
-            </div>
+            </div> */}
           </div>
         )}
 
         <h3 className="mt-4">Incomplete Sections</h3>
         {incompleteFields.length > 0 ? (
           <>
-          <ul>
+          <ul className="list-disc list-inside">
             {incompleteFields.map((field, index) => (
               <li key={index}>
                 <span>{field.section}</span>

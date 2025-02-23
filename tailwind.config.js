@@ -7,7 +7,7 @@ export default {
         "faq-bg": "url('')",
         "admission-bg": "url('')",
       },
-      borderRadius: {
+      padding: {
         xxl: "24px",
         xl: "16px",
         lg: "12px",

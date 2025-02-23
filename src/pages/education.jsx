@@ -64,8 +64,8 @@ const EducationPage = () => {
     <>
       <div className="Gform ">
         <div className="text">
-          <h2 className="">Educational Information</h2>
-          <h6>This data is automatically sent to the school you applied to.</h6>
+          <h2 className="">Academic History</h2>
+          {/* <h6>This data is automatically sent to the school you applied to.</h6> */}
         </div>
         <form className="form-container">
           <div className="division">
@@ -235,7 +235,7 @@ const EducationPage = () => {
           onClick={handleClick}
           disabled={isLoading}
         >
-          {isLoading ? "Saving..." : "Save & Continue"}
+          {isLoading ? "Saving..." : "Save"}
         </button>
       </div>
     </>

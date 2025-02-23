@@ -43,8 +43,8 @@ export const AuthProvider = ({ children }) => {
 
   // Navigate after successful login
   useEffect(() => {
-    // Redirect to /preview only if navigating from /login
-    if (isLoggedIn && window.location.pathname === "/login") {
+    // Redirect to /preview only if navigating from /
+    if (isLoggedIn && window.location.pathname === "/") {
       navigate("/preview");
     }
   }, [isLoggedIn, navigate]);
@@ -178,7 +178,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setIsLoggedIn(false);
     removeCookie("token"); // Remove token from cookie
-    navigate("/login");
+    navigate("/");
   };
 
   const [isAuthenticated, setIsAuthenticated] = useState(!!getCookie("token"));

@@ -125,7 +125,9 @@ const FileUpload = () => {
           "Authorization": `Bearer ${token}`,
         },
       }
-    );
+    );{
+      stack.map.join(', ') 
+  }
 
     return response.data.secure_url; // URL of the uploaded file
   };
