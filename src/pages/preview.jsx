@@ -1,156 +1,183 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { getCookie } from "../../lib/utils";
 import { useAuth } from "../contexts/AuthContext";
+import EditablePersonalInformation from "../components/editable-personal-information";
+import EditableAcademicHistory from "../components/editable-academic-history";
+
 const checkIncompleteFields = (data) => {
   const incompleteFields = [];
 
   if (
-    !data?.backgroundData?.surname || 
-    !data?.backgroundData?.otherNames || 
-    !data?.backgroundData?.dateOfBirth
+    !data?.personalInfo ||
+    Object.values(data.personalInfo).some((value) => !value)
   ) {
-    incompleteFields.push({ section: "Personal Information", link: "/personal-info" });
+    incompleteFields.push({
+      section: "Personal Information",
+      link: "/personal-info",
+    });
   }
 
-  if (data?.academicHistory?.results?.length === 0) {
-    incompleteFields.push({ section: "Academic History", link: "/academic-info" });
+  if (
+    !data?.academicHistory ||
+    Object.values(data.academicHistory).some((value) => !value) ||
+    !data.academicHistory.results?.length
+  ) {
+    incompleteFields.push({
+      section: "Academic History",
+      link: "/academic-info",
+    });
   }
 
-  if (data?.academicAspiration?.length === 0) {
-    incompleteFields.push({ section: "Academic Aspiration", link: "/academic-aspiration" });
+  if (!data?.guardianInfo || data.guardianInfo.length === 0) {
+    incompleteFields.push({
+      section: "Guardian Information",
+      link: "/guardian-info",
+    });
   }
 
-  if (data?.guardianInfo?.length === 0) {
-    incompleteFields.push({ section: "Guardian Information", link: "/guardian-info" });
-  }
-
-  if (data?.documents?.length === 0) {
+  if (!data?.documents || Object.keys(data.documents).length === 0) {
     incompleteFields.push({ section: "Documents", link: "/upload-documents" });
   }
 
   return incompleteFields;
 };
 
-
 const Preview = () => {
   const [data, setData] = useState(null);
   const [incompleteFields, setIncompleteFields] = useState([]);
-  const [userID, setUserID] = useState(null);
-  const [token, setToken] = useState(null);
-  const [editOff, setEditOff] = useState(true); // Toggle for editing
   const { logout } = useAuth();
 
-  // Get userID and token after component mounts
-  useEffect(() => {
-    const storedUserID = getCookie("userId");
-    const storedToken = getCookie("token");
-    setUserID(storedUserID);
-    setToken(storedToken);
-  }, []);
+  // Memoize userID and token to prevent infinite re-renders
+  const userID = useMemo(() => getCookie("userId"), []);
+  const token = useMemo(() => getCookie("token"), []);
 
   useEffect(() => {
+    if (!userID || !token) return;
+
     const fetchData = async () => {
-      if (userID && token) { 
-        try {
-          const response = await axios.get(
-            `http://localhost:8000/api/applicant/${userID}/fetch-data`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/applicant/${userID}/fetch-data`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (response.data.applicant) {
+          setData((prev) =>
+            JSON.stringify(prev) !== JSON.stringify(response.data.applicant)
+              ? response.data.applicant
+              : prev
           );
-          setData(response.data.applicant);
-          setIncompleteFields(checkIncompleteFields(response.data.applicant));
-        } catch (error) {
-          console.error("Error fetching data:", error);
+          setIncompleteFields((prev) =>
+            JSON.stringify(prev) !==
+            JSON.stringify(checkIncompleteFields(response.data.applicant))
+              ? checkIncompleteFields(response.data.applicant)
+              : prev
+          );
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     };
+
     fetchData();
   }, [userID, token]);
 
-  const handleChange = (e, field) => {
-    setData(prev => ({
-      ...prev,
-      backgroundData: {
-        ...prev.backgroundData,
-        [field]: e.target.value
+  const updatePersonalInfo = async (updatedInfo) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/applicant/${userID}/update-personal-info`,
+        { personalInfo: updatedInfo },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.personalInfo) {
+        setData((prev) => ({
+          ...prev,
+          personalInfo: response.data.personalInfo,
+        }));
       }
-    }));
+    } catch (error) {
+      console.error("Error updating personal info:", error);
+    }
+  };
+
+  const updateAcademicHistory = async (updatedHistory) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/applicant/${userID}/update-academic-history`,
+        { academicHistory: updatedHistory },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.academicHistory) {
+        setData((prev) => ({
+          ...prev,
+          academicHistory: response.data.academicHistory,
+        }));
+      }
+    } catch (error) {
+      console.error("Error updating academic history:", error);
+    }
   };
 
   return (
     <div className="w-4/5 mx-auto">
       <header className="h-16 flex items-center justify-between">
         <h1>Preview</h1>
-        <button onClick={async () => await logout()}>Log Out</button>
+        <button onClick={logout}>Log Out</button>
       </header>
-      <section className="border p-4 rounded-lg ">
-        <h2>Personal Information</h2>
-        {data && (
-          <div className="space-y-4">
-            <div>
-              <label>Email</label>
-              <input value={data?.email} disabled className="border p-2 rounded-md w-full"/>
-            </div>
-            {/* <div>
-              <label>Surname</label>
-              <input 
-                value={data?.backgroundData?.surname || ""}
-                onChange={(e) => handleChange(e, "surname")}
-                disabled={editOff}
-                className="border p-2 rounded-md w-full"
-              />
-            </div>
-            <div>
-              <label>Other Names</label>
-              <input 
-                value={data?.backgroundData?.otherNames || ""}
-                onChange={(e) => handleChange(e, "otherNames")}
-                disabled={editOff}
-                className="border p-2 rounded-md w-full"
-              />
-            </div>
-            <div>
-              <label>Date of Birth</label>
-              <input 
-                value={data?.backgroundData?.dateOfBirth || ""}
-                onChange={(e) => handleChange(e, "dateOfBirth")}
-                disabled={editOff}
-                className="border p-2 rounded-md w-full"
-              />
-            </div> */}
-          </div>
-        )}
 
-        <h3 className="mt-4">Incomplete Sections</h3>
-        {incompleteFields.length > 0 ? (
-          <>
+      {data ? (
+        <>
+          {data.personalInfo && (
+            <EditablePersonalInformation
+              data={data.personalInfo}
+              updateData={updatePersonalInfo}
+            />
+          )}
+          {data.academicHistory && (
+            <EditableAcademicHistory
+              data={data.academicHistory}
+              updateData={updateAcademicHistory}
+            />
+          )}
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+
+      {incompleteFields.length > 0 ? (
+        <>
+          <h3 className="mt-4">Incomplete Sections</h3>
           <ul className="list-disc list-inside">
             {incompleteFields.map((field, index) => (
               <li key={index}>
                 <span>{field.section}</span>
-                <a href={field.link} className="text-blue-500 ml-2 underline">Complete Now</a>
+                <a href={field.link} className="text-blue-500 ml-2 underline">
+                  Complete Now
+                </a>
               </li>
             ))}
           </ul>
-          </>
-        ) : (
-          <p>All sections are complete!</p>
-        )}
-
-        <button 
-          onClick={() => setEditOff(!editOff)} 
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
-        >
-          {editOff ? "Edit" : "Save"}
-        </button>
-      </section>
+        </>
+      ) : (
+        <p>All sections are complete!</p>
+      )}
     </div>
   );
 };
-
 
 export default Preview;

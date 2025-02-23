@@ -4,7 +4,7 @@
 
 // const userID = getCookie("userID");
 
-// const SingleFileUpload = () => {
+// const SingleDocumentUpload = () => {
 //   const [selectedFile, setSelectedFile] = useState(null);
 //   const [uploadedUrl, setUploadedUrl] = useState("");
 //   const [isUploading, setIsUploading] = useState(false);
@@ -78,14 +78,14 @@
 //   );
 // };
 
-// export default SingleFileUpload;
+// export default SingleDocumentUpload;
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getCookie } from "../../lib/utils";
 
 
-const FileUpload = () => {
+const DocumentUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedField, setSelectedField] = useState(""); // Store document type
   const [uploadedUrl, setUploadedUrl] = useState("");
@@ -191,4 +191,4 @@ const FileUpload = () => {
   );
 };
 
-export default FileUpload;
+export default DocumentUpload;

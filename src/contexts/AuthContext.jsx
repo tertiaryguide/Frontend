@@ -9,17 +9,9 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!getCookie("token")); // Persistent state
 
   const navigate = useNavigate();
-
-  // Retrieve token from cookies on app load
-  useEffect(() => {
-    const storedToken = getCookie("token");
-    if (storedToken) {
-      setIsLoggedIn(true);
-    }
-  }, []);
 
   // Handle error messages
   useEffect(() => {
@@ -43,11 +35,14 @@ export const AuthProvider = ({ children }) => {
 
   // Navigate after successful login
   useEffect(() => {
-    // Redirect to /preview only if navigating from /
-    if (isLoggedIn && window.location.pathname === "/") {
+    if (
+      isAuthenticated &&
+      (window.location.pathname === "/" ||
+        window.location.pathname === "/register")
+    ) {
       navigate("/preview");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isAuthenticated, navigate]);
 
   const login = async (email, passKey, setIsLoading) => {
     const validateEmail = () => {
@@ -57,137 +52,90 @@ export const AuthProvider = ({ children }) => {
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         setErrorMessage("Invalid email format");
         return false;
-      } else {
-        setErrorMessage("");
-        return true;
       }
+      return true;
     };
 
     const validatePassword = () => {
       if (!passKey) {
         setErrorMessage("Password is required");
         return false;
-      } else {
-        setErrorMessage("");
-        return true;
       }
+      return true;
     };
 
     setErrorMessage("");
     setIsLoading(true);
 
-    if (validateEmail(email) && validatePassword(passKey)) {
+    if (validateEmail() && validatePassword()) {
       try {
         const response = await axios.post(
           "http://localhost:8000/api/applicant/login",
-          {
-            email,
-            passKey,
-          },
+          { email, passKey },
           {
             withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
           }
         );
 
-        console.log("Login response:", response.data);
-
         if (response.data) {
-          setCookie("token", response.data.token, 30); // Store token in cookie
-          setCookie("userId", response.data.id, 30) // Store userId in cookie
+          setCookie("token", response.data.token, 30);
+          setCookie("userId", response.data.id, 30);
           setSuccessMessage("Login successful");
-          setIsLoggedIn(true);
+          setIsAuthenticated(true); // ✅ Update authentication state
         } else {
           setErrorMessage("Login failed.");
         }
       } catch (error) {
-        console.error("Error logging in:", error);
         setErrorMessage("An error occurred. Please try again.");
       } finally {
         setIsLoading(false);
       }
-    } else {
-      setErrorMessage("An error occurred. Please try again.");
     }
   };
+
   const register = async (email, passKey, setIsLoading) => {
-    const validateEmail = () => {
-      if (!email) {
-        setErrorMessage("Email is required");
-        return false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setErrorMessage("Invalid email format");
-        return false;
-      } else {
-        setErrorMessage("");
-        return true;
-      }
-    };
-
-    const validatePassword = () => {
-      if (!passKey) {
-        setErrorMessage("Password is required");
-        return false;
-      } else {
-        setErrorMessage("");
-        return true;
-      }
-    };
-
     setErrorMessage("");
     setIsLoading(true);
 
-    if (validateEmail(email) && validatePassword(passKey)) {
-      try {
-        const response = await axios.post(
-          "http://localhost:8000/api/applicant/create-applicant",
-          {
-            email,
-            passKey,
-          },
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+    if (!email || !passKey) {
+      setErrorMessage("Email and password are required.");
+      setIsLoading(false);
+      return;
+    }
 
-        console.log("Activation response:", response.data);
-
-        if (response.data) {
-          setCookie("token", response.data.token, 30); // Store token in cookie
-          setCookie("userId", response.data.id, 30) // Store userId in cookie
-          setSuccessMessage("Account activation successful");
-          setIsLoggedIn(true);
-        } else {
-          setErrorMessage("Account activation failed.");
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/applicant/create-applicant",
+        { email, passKey },
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
         }
-      } catch (error) {
-        console.error("Error activating account in:", error);
-        setErrorMessage("An error occurred. Please try again.");
-      } finally {
-        setIsLoading(false);
+      );
+
+      if (response.data) {
+        setCookie("token", response.data.token, 30);
+        setCookie("userId", response.data.id, 30);
+        setSuccessMessage("Account created successfully");
+        setIsAuthenticated(true);
+      } else {
+        setErrorMessage("Account creation failed.");
       }
-    } else {
+    } catch (error) {
       setErrorMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
-  const logout = () => {
-    setIsLoggedIn(false);
-    removeCookie("token"); // Remove token from cookie
+
+  const logout = async () => {
+    removeCookie("token");
+    removeCookie("userId");
+    setIsAuthenticated(false);
+    await axios.post("http://localhost:8000/api/logout");
     navigate("/");
   };
-
-  const [isAuthenticated, setIsAuthenticated] = useState(!!getCookie("token"));
-
-  useEffect(() => {
-    const storedToken = getCookie("token");
-    setIsAuthenticated(!!storedToken);
-  }, []);
-  
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, register, login, logout }}>

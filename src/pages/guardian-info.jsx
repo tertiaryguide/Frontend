@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/supporting.css";
 import { useNavigate } from "react-router-dom";
-import MultipleFileUpload from "./file-upload";
+import MultipleFileUpload from "./upload-document";
 import CongratulatoryPopUp from "../components/congratulatory-popup";
 import axios from "axios";
 import { getCookie } from "../../lib/utils";
@@ -26,13 +26,13 @@ const initial = {
   },
 };
 
-const SupportingPage = () => {
+const GuardianInformationPage = () => {
   const navigate = useNavigate();
   const [showPop, setShowPop] = useState(false);
   const [parentData, setParentData] = useState(initial);
   const [isLoading, setIsLoading] = useState(false);
-    const [userID, setUserID] = useState(null);
-    const [token, setToken] = useState(null);
+  const [userID, setUserID] = useState(null);
+  const [token, setToken] = useState(null);
   // Get userID and token after component mounts
   useEffect(() => {
     const storedUserID = getCookie("userId");
@@ -64,17 +64,20 @@ const SupportingPage = () => {
   const handleSaveAndExit = async () => {
     try {
       setIsLoading(true);
-      await axios.post(`http://localhost:8000/api/applicant/caretaker-data`, {
-        applicantId: userID,
-        caretakerData: parentData,
-      },
-    {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    });
+      await axios.post(
+        `http://localhost:8000/api/applicant/caretaker-data`,
+        {
+          applicantId: userID,
+          caretakerData: parentData,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setShowPop(true);
     } catch (error) {
       console.error("Error saving background data:", error);
@@ -93,8 +96,8 @@ const SupportingPage = () => {
           <h2>Guardian(s) Data</h2>
           <h6>This data is automatically sent to the school you applied to.</h6>
         </div>
-                {/* Father's Information */}
-                <div className="borders">
+        {/* Father's Information */}
+        <div className="borders">
           <form className="form-container">
             <div className="lform">
               <label htmlFor="fatherName">Father's Name</label>
@@ -172,8 +175,8 @@ const SupportingPage = () => {
             <input type="checkbox" /> Tick if Deceased
           </div>
         </div>
-                {/* Mother's Information */}
-                <div className="borders">
+        {/* Mother's Information */}
+        <div className="borders">
           <form className="form-container">
             <div className="lform">
               <label htmlFor="motherName">Mother's Name</label>
@@ -226,7 +229,11 @@ const SupportingPage = () => {
         <button className="go-back-button" onClick={handleBackButton}>
           Go Back
         </button>
-        <button className="save-exit-button" onClick={handleSaveAndExit} disabled={isLoading}>
+        <button
+          className="save-exit-button"
+          onClick={handleSaveAndExit}
+          disabled={isLoading}
+        >
           {isLoading ? "Saving..." : "Save & Exit"}
         </button>
       </div>
@@ -235,4 +242,4 @@ const SupportingPage = () => {
   );
 };
 
-export default SupportingPage;
+export default GuardianInformationPage;

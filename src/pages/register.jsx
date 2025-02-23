@@ -91,7 +91,7 @@ const Register = () => {
           }}
           disabled={isLoading}
         >
-          {isLoading ? "Creating account..." : "Register"}
+          {isLoading ? "Activating account..." : "Activate"}
         </button>
       </form>
       <p style={{ marginTop: "20px", textAlign: "center" }}>
