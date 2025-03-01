@@ -4,6 +4,7 @@ import { getCookie } from "../../lib/utils";
 import { useAuth } from "../contexts/AuthContext";
 import EditablePersonalInformation from "../components/editable-personal-information";
 import EditableAcademicHistory from "../components/editable-academic-history";
+import EditableGuardianInformation from "../components/editable-guardian-information";
 
 const checkIncompleteFields = (data) => {
   const incompleteFields = [];
@@ -133,6 +134,30 @@ const Preview = () => {
     }
   };
 
+  const updateGuardianInfo = async (updatedGuardiannfo) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/applicant/${userID}/update-academic-history`,
+        { caretaker: updatedGuardiannfo },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.academicHistory) {
+        setData((prev) => ({
+          ...prev,
+          academicHistory: response.data.academicHistory,
+        }));
+      }
+    } catch (error) {
+      console.error("Error updating academic history:", error);
+    }
+  };
+
   return (
     <div className="w-4/5 mx-auto">
       <header className="h-16 flex items-center justify-between">
@@ -152,6 +177,12 @@ const Preview = () => {
             <EditableAcademicHistory
               data={data.academicHistory}
               updateData={updateAcademicHistory}
+            />
+          )}
+          {data.academicHistory && (
+            <EditableGuardianInformation
+              data={data.guardianInfo}
+              updateData={updateGuardianInfo}
             />
           )}
         </>
