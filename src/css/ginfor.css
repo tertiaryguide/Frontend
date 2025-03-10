@@ -84,13 +84,13 @@ h6 {
 /* x */
 
 button {
-  background-color: #007bff;
+  /* background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: pointer; */
 }
 
 button:hover {

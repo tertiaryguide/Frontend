@@ -162,7 +162,7 @@ const Preview = () => {
     <div className="w-4/5 mx-auto">
       <header className="h-16 flex items-center justify-between">
         <h1>Preview</h1>
-        <button onClick={logout}>Log Out</button>
+        <button onClick={logout} className="bg-blue-500 p-3 rounded-sm text-white">Log Out</button>
       </header>
 
       {data ? (
@@ -197,7 +197,7 @@ const Preview = () => {
             {incompleteFields.map((field, index) => (
               <li key={index}>
                 <span>{field.section}</span>
-                <a href={field.link} className="text-blue-500 ml-2 underline">
+                <a href={field.link} className="text-red--500 ml-2 underline">
                   Complete Now
                 </a>
               </li>
