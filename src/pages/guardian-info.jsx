@@ -65,7 +65,7 @@ const GuardianInformationPage = () => {
     try {
       setIsLoading(true);
       await axios.post(
-        `http://localhost:8000/api/applicant/caretaker-data`,
+        `https://tg-backend-snex.onrender.com/api/applicant/caretaker-data`,
         {
           applicantId: userID,
           caretakerData: parentData,

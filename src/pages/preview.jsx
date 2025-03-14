@@ -59,7 +59,7 @@ const Preview = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/applicant/${userID}/fetch-data`,
+          `https://tg-backend-snex.onrender.com/api/applicant/${userID}/fetch-data`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -89,7 +89,7 @@ const Preview = () => {
   const updatePersonalInfo = async (updatedInfo) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/applicant/${userID}/update-personal-info`,
+        `https://tg-backend-snex.onrender.com/api/applicant/${userID}/update-personal-info`,
         { personalInfo: updatedInfo },
         {
           headers: {
@@ -113,7 +113,7 @@ const Preview = () => {
   const updateAcademicHistory = async (updatedHistory) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/applicant/${userID}/update-academic-history`,
+        `https://tg-backend-snex.onrender.com/api/applicant/${userID}/update-academic-history`,
         { academicHistory: updatedHistory },
         {
           headers: {
@@ -137,7 +137,7 @@ const Preview = () => {
   const updateGuardianInfo = async (updatedGuardiannfo) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/applicant/${userID}/update-academic-history`,
+        `https://tg-backend-snex.onrender.com/api/applicant/${userID}/update-academic-history`,
         { caretaker: updatedGuardiannfo },
         {
           headers: {

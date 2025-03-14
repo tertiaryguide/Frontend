@@ -67,7 +67,7 @@ const AcademicInformationPage = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://localhost:8000/api/applicant/academics",
+        "https://tg-backend-snex.onrender.com/api/applicant/academics",
         {
           applicantId: userID,
           academicHistory: values.history,

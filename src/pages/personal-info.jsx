@@ -32,7 +32,7 @@ const PersonalInformationPage = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "http://localhost:8000/api/applicant/background-data",
+        "https://tg-backend-snex.onrender.com/api/applicant/background-data",
         {
           applicantId: currentUserID,
           personalInfo: values,

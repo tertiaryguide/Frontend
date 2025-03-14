@@ -43,7 +43,7 @@
 //       setUploadedUrl(url);
 
 //       // Send URL to backend for storage
-//       await axios.post(`http://localhost:8000/api/${userID}/upload-file`, {
+//       await axios.post(`https://tg-backend-snex.onrender.com/api/${userID}/upload-file`, {
 //         fileUrl: url,
 //       });
 
@@ -146,7 +146,7 @@ const DocumentUpload = () => {
       setUploadedUrl(fileUrl);
 
       // Send URL and document type to backend for storage
-      await axios.post(`http://localhost:8000/api/applicant/${userID}/upload-file`, {
+      await axios.post(`https://tg-backend-snex.onrender.com/api/applicant/${userID}/upload-file`, {
         fileUrl,
         selectedField,
       });
