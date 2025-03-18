@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const EditablePersonalInformation = ({ data, updateData }) => {
+const EditablePersonalInformation = ({ data, email, updateData, }) => {
   const [editMode, setEditMode] = useState(false);
   const [personalInfo, setPersonalInfo] = useState(data);
 
@@ -23,7 +23,7 @@ const EditablePersonalInformation = ({ data, updateData }) => {
         <div>
           <label>Email</label>
           <input
-            value={data.email}
+            value={email}
             disabled
             className="border p-2 rounded-md w-full bg-gray-100"
           />

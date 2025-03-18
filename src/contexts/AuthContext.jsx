@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
     if (validateEmail() && validatePassword()) {
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/applicant/login",
+          "https://tg-backend-snex.onrender.com/api/applicant/login",
           { email, passKey },
           {
             withCredentials: true,
@@ -106,7 +106,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/applicant/create-applicant",
+        "https://tg-backend-snex.onrender.com/api/applicant/create-applicant",
         { email, passKey },
         {
           withCredentials: true,
@@ -133,7 +133,7 @@ export const AuthProvider = ({ children }) => {
     removeCookie("token");
     removeCookie("userId");
     setIsAuthenticated(false);
-    await axios.post("http://localhost:8000/api/logout");
+    await axios.post("https://tg-backend-snex.onrender.com/api/logout");
     navigate("/");
   };
 
