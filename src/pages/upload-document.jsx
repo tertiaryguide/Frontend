@@ -63,10 +63,16 @@
 //       const fileUrl = await uploadToCloudinary(selectedFile);
 //       setUploadedUrl(fileUrl);
 
+<<<<<<< HEAD
 //       // Send URL and document type to backend for storage
 //       await axios.post(`https://tg-backend-snex.onrender.com/api/applicant/${userID}/upload-file`, {
 //         fileUrl,
 //         selectedField,
+=======
+//       // Send URL to backend for storage
+//       await axios.post(`https://tg-backend-snex.onrender.com/api/${userID}/upload-file`, {
+//         fileUrl: url,
+>>>>>>> af721752875a74feb901eb0fc5911f39b789bbec
 //       });
 
 //       alert("File uploaded and stored successfully!");
